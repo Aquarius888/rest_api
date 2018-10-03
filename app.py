@@ -4,6 +4,7 @@ import json
 from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = '/home/paul/mypro/my_flask/api_files'
+ATTACHED_FOLDER = '/opt/storage'
 ALLOWED_EXTENSIONS = set(['txt'])
 
 if not os.path.exists(UPLOAD_FOLDER):
@@ -61,7 +62,7 @@ def post_file():
 
         with open(UPLOAD_FOLDER + '/' + filename, encoding='utf-8', errors='ignore') as upload_file, \
                 open(UPLOAD_FOLDER + '/' + "new_poem.txt", "w") as write_file, \
-                open(UPLOAD_FOLDER + '/' + "occurrencies.txt", "w") as counter_file:
+                open(ATTACHED_FOLDER + '/' + "occurrencies.txt", "w") as counter_file:
         
             for line in upload_file:
                 lst_of_line = line.split()
