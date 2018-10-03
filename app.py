@@ -25,7 +25,8 @@ def rest_api():
 @app.route('/api/v1/<path:path>', methods=["GET"])
 def get_file(path):
     '''Download a file
-    Usage http://<IP>:5000/api/v1/<filename>
+
+    Usage: GET http://<server-IP>:5000/api/v1/<filename>
     '''
     if request.method == "GET":
         return send_from_directory(UPLOAD_FOLDER, path, as_attachment=True)
@@ -33,6 +34,10 @@ def get_file(path):
 
 @app.route('/api/v1', methods=["POST"])
 def post_file():
+    '''Upload a file and compute it
+    
+    Usage: POST http://<server-IP>:5000/api/v1 name="file"; filename=<filename>
+    '''
     lst_of_colors = ['blue', 'red', 'yellow']
     counter = {}
 
@@ -54,11 +59,11 @@ def post_file():
             filez.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             # return redirect(url_for('uploaded_file', filename=filename))
 
-        with open(UPLOAD_FOLDER + '/' + filename, encoding='utf-8', errors='ignore') as obj_file, \
+        with open(UPLOAD_FOLDER + '/' + filename, encoding='utf-8', errors='ignore') as upload_file, \
                 open(UPLOAD_FOLDER + '/' + "new_poem.txt", "w") as write_file, \
-                open(UPLOAD_FOLDER + '/' + "occurrencies.txt", "w") as cntr:
+                open(UPLOAD_FOLDER + '/' + "occurrencies.txt", "w") as counter_file:
         
-            for line in obj_file:
+            for line in upload_file:
                 lst_of_line = line.split()
                 for color in lst_of_colors:
                     for word in lst_of_line:
@@ -71,19 +76,11 @@ def post_file():
                                 counter[color] = 1    
 
                 write_file.write(" ".join(lst_of_line) + '\n')
-            cntr.write(json.dumps(counter, indent=4))
+            counter_file.write(json.dumps(counter, indent=4))
 
-        return '201, Done'
+        return 'Done', 201
 
-    return '''
-    <!doctype html>
-    <title>Upload new File</title>
-    <h1>Upload new File</h1>
-    <form method=post enctype=multipart/form-data>
-      <p><input type=file name=file>
-         <input type=submit value=Upload>
-    </form>
-    '''
+    return 'Bye'
 
 
 if __name__ == '__main__':
