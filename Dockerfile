@@ -1,11 +1,20 @@
-FROM ubuntu:latest
-MAINTAINER Epamer
-RUN apt-get update -y
-RUN apt-get install -y python3.6 python3-pip python3.6-dev build-essential
-RUN apt-get install -y git
+FROM python:3.6-alpine as base 
+
+FROM base as builder
+
+RUN mkdir /install
+WORKDIR /install
+
+COPY requirements.txt /requirements.txt
+
+RUN pip3 install --install-option="--prefix=/install" -r /requirements.txt
+
+FROM base
+
+COPY --from=builder /install /usr/local
+
 COPY . /app
 WORKDIR /app
-RUN pip3 install -r requirements.txt
 EXPOSE 5000
 ENTRYPOINT ["python3"]
 CMD ["app.py"]
