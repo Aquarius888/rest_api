@@ -1,5 +1,5 @@
 # rest_api
-Test project for MRK(Epam)
+Test project for MRC(Epam)
 
 ## Usage
 
