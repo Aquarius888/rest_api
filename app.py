@@ -25,9 +25,9 @@ def rest_api():
 
 @app.route('/api/v1/<path:path>', methods=["GET"])
 def get_file(path):
-    '''Download a file
+    '''Download an altered file poem.txt
 
-    Usage: GET http://<server-IP>:5000/api/v1/<filename>
+    Usage: GET http://<server-IP>:5000/api/v1/new_poem.txt
     '''
     if request.method == "GET":
         return send_from_directory(UPLOAD_FOLDER, path, as_attachment=True)
