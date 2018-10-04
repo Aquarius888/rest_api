@@ -2,10 +2,12 @@ from flask import Flask, redirect, request, send_from_directory
 import os
 import json
 from werkzeug.utils import secure_filename
+import settings
 
-UPLOAD_FOLDER = '/home/paul/mypro/my_flask/api_files'
-ATTACHED_FOLDER = '/opt/storage'
-ALLOWED_EXTENSIONS = set(['txt'])
+#import values from settings.py
+UPLOAD_FOLDER = settings.UPLOAD_FOLDER 
+ATTACHED_FOLDER = settings.ATTACHED_FOLDER
+ALLOWED_EXTENSIONS = settings.ALLOWED_EXTENSIONS
 
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
