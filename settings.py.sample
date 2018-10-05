@@ -6,7 +6,7 @@ UPLOAD_FOLDER = '/opt/upload'
 
 # Value ATTACHED_FOLDER is depence on command of run docker container
 # for ex., docker run -v "/opt/volume":/opt/storage -d -p 5000:5000 flask-rest-alpine:latest
-ATTACHED_FOLDER = '/opt/storage'
+ATTACHED_FOLDER = '/opt'
 
 # It could be extended
 ALLOWED_EXTENSIONS = set(['txt'])
