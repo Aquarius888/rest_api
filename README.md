@@ -10,6 +10,6 @@ Test project for MRC(Epam)
 5. docker run -v "/opt/volume":/opt -d -p 5000:5000 flask-rest-alpine:latest
 
 ### Check
-6. curl -i -X POST -F file=@<path_and_name_of_uploaded_file> http://localhost:5000/api/v1
-7. curl -i http://localhost:5000/api/v1/new_poem.txt
+6. curl -i -X POST -F file=@<path_and_name_of_upload_file> http://<server_IP>:5000/api/v1
+7. curl -i http://<server_IP>:5000/api/v1/new_poem.txt
 8. cat /opt/volume/occurrancies.txt
