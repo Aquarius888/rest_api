@@ -71,7 +71,7 @@ def post_file():
                 for color in lst_of_colors:
                     for word in lst_of_line:
                         if color in word:
-                            lst_of_line[lst_of_line.index(word)] = word.replace(color, color.capitalize())
+                            lst_of_line[lst_of_line.index(word)] = word.replace(color, color.upper())
                     
                             if color in counter.keys():
                                 counter[color] += 1
