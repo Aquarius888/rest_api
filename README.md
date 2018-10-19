@@ -1,7 +1,17 @@
 # rest_api
 Test project for MRC(Epam)
 
-## Usage
+## Automation Usage
+
+1. Requirements:
+1.1 installed and configured terraform
+1.2 exported AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
+2. git clone https://github.com/Aquarius888/rest_api.git
+3. cd rest_api
+4. terraform plan
+5. terraform apply (yes)
+
+## Manual Usage
 
 1. git clone https://github.com/Aquarius888/rest_api.git
 2. cd rest_api
