@@ -72,7 +72,7 @@ def post_file():
                     for word in lst_of_line:
                         if color in word:
                             lst_of_line[lst_of_line.index(word)] = word.replace(color, color.upper())
-                            assert word.isupper(), "Check the post_file function, something wrong"
+                            #assert word.isupper(), "Check the post_file function, something wrong"
                     
                             if color in counter.keys():
                                 counter[color] += 1
