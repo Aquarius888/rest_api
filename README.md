@@ -1,5 +1,4 @@
 # rest_api
-Test project for MRC(Epam)
 
 ## Automation Usage
 
